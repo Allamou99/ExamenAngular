@@ -15,6 +15,10 @@ export class VirtualmachinesService {
   }
 
   addVm(Vm :any): Observable<any>{
-    return this.http.post<any>(url +'/vms', Vm)
+    return this.http.post<any>(url +'/vms/', Vm)
+  }
+
+  updateVm(Vm:any,vmid:any):Observable<any>{
+    return this.http.put<any>(url +'/vms/'+vmid, Vm)
   }
 }

@@ -6,7 +6,11 @@ import { VirtualmachinesService } from '../services/virtualmachines.service';
   styleUrls: ['./virtualmachines.component.scss']
 })
 export class VirtualmachinesComponent implements OnInit {
-
+  updated : any =     {
+    MachineName:"",
+    AdressIp:"",
+    Arrete:false,
+  }
   constructor(private VirtualmachinesService : VirtualmachinesService) { }
   vms : any
   ngOnInit(): void {
@@ -16,11 +20,18 @@ export class VirtualmachinesComponent implements OnInit {
     });
   }
 
-  arreter(id : any){
-    
-  }
-  demarrer(id : any){
+  arreter(id : any,vm:any){
+    this.updated.MachineName = vm.MachineName;
+    this.updated.AdressIp = vm.AdressIp;
+    this.updated.Arrete = true;
+    this.VirtualmachinesService.updateVm(this.updated,id)
+    .subscribe(res=>{console.log(res); this.VirtualmachinesService.getAllVMS().subscribe(vms=>this.vms = vms)})
 
   }
-
+  demarrer(id : any,vm:any){
+    this.updated.MachineName = vm.MachineName;
+    this.updated.AdressIp = vm.AdressIp;
+    this.VirtualmachinesService.updateVm(this.updated,id)
+    .subscribe(res=>{console.log(res) ;this.VirtualmachinesService.getAllVMS().subscribe(vms=>this.vms = vms)})
+  }
 }
