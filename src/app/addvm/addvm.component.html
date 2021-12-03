@@ -1,0 +1,19 @@
+
+<div class="Addvmform" fxFlex="50%">
+    <div class="signupMessage">
+      <h1>Add VM </h1>
+    </div>
+    <div fxLayout="column" form novalidate [formGroup]="VmForm">
+        <mat-form-field>
+          <input matInput formControlName="machinename" placeholder="Nom de machine" type="text" required>
+          <mat-error *ngIf="VmForm.controls.machinename.errors?.required">Machine name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="adresseip" placeholder="Adresse IP" type="text" required>
+            <mat-error *ngIf="VmForm.controls.adresseip.errors?.required">Adresse IP is required</mat-error>
+          </mat-form-field>
+          <mat-slide-toggle formControlName="etat" >Demarré ou arreté?</mat-slide-toggle>
+
+        <button [disabled]="this.VmForm.invalid " mat-raised-button color="primary" (click)="onSubmit()">Ajouter machine</button>
+  </div>
+  </div>

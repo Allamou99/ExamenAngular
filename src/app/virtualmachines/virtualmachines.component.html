@@ -1,0 +1,26 @@
+<h1>Liste des machines virtuelles</h1>
+<div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="33%" *ngFor="let vm of this.vms">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Machine : {{vm.MachineName}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                Adresse IP : {{vm.AdressIp}}
+              </p>
+              <p *ngIf="vm.Arrete">
+                Etat : Arreté
+              </p>
+              <p *ngIf="!vm.Arrete">
+                Etat : Demarré
+              </p>
+            </mat-card-content>
+            <hr>
+            <mat-card-actions>
+                <button *ngIf="vm.Arrete" mat-button (click)="demarrer(vm._id)" style="background-color: green;">Demarer</button>
+                <button *ngIf="!vm.Arrete" mat-button (click)="arreter(vm._id)" style="background-color: red;">Arreter</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    </div>
