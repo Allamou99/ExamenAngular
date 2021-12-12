@@ -18,8 +18,8 @@
             </mat-card-content>
             <hr>
             <mat-card-actions>
-                <button *ngIf="vm.Arrete" mat-button (click)="demarrer(vm._id,vm)" style="background-color: green;">Demarer</button>
-                <button *ngIf="!vm.Arrete" mat-button (click)="arreter(vm._id,vm)" style="background-color: red;">Arreter</button>
+                <button *ngIf="vm.Arrete" mat-button (click)="demarrer(vm._id,vm)" style="background-color: green;" id="demarer">Demarer</button>
+                <button *ngIf="!vm.Arrete" mat-button (click)="arreter(vm._id,vm)" style="background-color: red;" id="arreter">Arreter</button>
             </mat-card-actions>
           </mat-card>
     </div>
